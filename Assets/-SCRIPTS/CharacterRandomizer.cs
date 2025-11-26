@@ -22,6 +22,8 @@ public class CharacterRandomizer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             Randomize();
+
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonPressed, this.transform.position); //test sound
         }
 
         if (Input.GetKeyDown(KeyCode.T))
