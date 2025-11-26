@@ -249,6 +249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 898181485}
+  - component: {fileID: 898181486}
   - component: {fileID: 898181484}
   m_Layer: 0
   m_Name: GameManager
@@ -288,6 +289,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &898181486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898181483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e97a9895276b53649a74b3210d0a335a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterRandomizer: {fileID: 898181484}
+  isRunning: 0
+  floorCount: 000000000000000000000000000000000000000000000000000000000000
+  currentFloor: 0
+  stopFloor: 0
+  winConFloor: 0
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 public class CharacterRandomizer : MonoBehaviour
 {
     [Header("Freak State")]
-    [SerializeField] private bool freakInElevator = false;
+    [SerializeField] public bool freakInElevator = false;
 
     [Header("Values")]
     [SerializeField] private int skinColor;
@@ -30,7 +30,7 @@ public class CharacterRandomizer : MonoBehaviour
         }
     }
 
-    private void Randomize()
+    void Randomize()
     {
         if (freakInElevator)
         {
