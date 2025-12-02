@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CharacterRandomizer : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class CharacterRandomizer : MonoBehaviour
     [SerializeField] public int requestFloor;
 
     [Header("Values")]
-    [SerializeField] private int skinColor;
-    [SerializeField] private int hatType;
+    [SerializeField] private Color skinColor;
+    [SerializeField] private Color mouthColor;
+    [SerializeField] private Color earColor;
+    [SerializeField] private int voiceType;
     [SerializeField] private int personality;
 
     void Update()
@@ -36,8 +39,11 @@ public class CharacterRandomizer : MonoBehaviour
         }
 
         ///SCALABLE PARAMETERS///
-        skinColor = Random.Range(0, 6);
-        hatType = Random.Range(0, 3);
+        skinColor = Random.ColorHSV(0f, 1f, 0.8f, 1f, 0.7f, 1f); //***change all the values to work with RGB***//
+        mouthColor = Random.ColorHSV(0f, 1f, 0.8f, 1f, 0.7f, 1f);
+        earColor = Random.ColorHSV(0f, 1f, 0.8f, 1f, 0.7f, 1f);
+
+        voiceType = Random.Range(0, 3); //***change range later based on amount of voices***//
         personality = Random.Range(0, 3);
 
         requestFloor = Random.Range(0, elevator.currentFloor); //calls a random number to be selected as the requested floor
