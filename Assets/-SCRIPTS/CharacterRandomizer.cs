@@ -1,81 +1,34 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UIElements;
 
 public class CharacterRandomizer : MonoBehaviour
 {
-    public Elevator elevator;
-    public GameObject freakPrefab;
-
     [Header("Freak State")]
     [SerializeField] public bool freakInElevator = false;
-    [SerializeField] public int requestFloor;
 
     [Header("Values")]
-    [SerializeField] private Color skinColor;
-    [SerializeField] private Color mouthColor;
-    [SerializeField] private Color earColor;
-    [SerializeField] private int voiceType;
+    [SerializeField] private int skinColor;
+    [SerializeField] private int hatType;
     [SerializeField] private int personality;
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) //***TEST INPUT; CHANGE LATER***
+        if (Input.GetKeyDown(KeyCode.R))
         {
             Randomize();
 
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonPressed, this.transform.position); //test sound; runs from FMOD hardcoded into script
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonPressed, this.transform.position); //test sound
         }
 
-        if (Input.GetKeyDown(KeyCode.T)) //***TEST INPUT; CHANGE LATER***
+        if (Input.GetKeyDown(KeyCode.T))
         {
             freakInElevator = true;
-        }
-    }
-
-    public IEnumerator FreakSpawner()
-    {
-        Debug.Log("FreakSpawner is running!");
-
-        Randomize();
-
-        Instantiate(freakPrefab);
-        freakInElevator = true;
-        elevator.canPress = false;
-
-        float waitTime = 7.5f;
-        Debug.Log("Waiting " + waitTime + " seconds before moving..."); //this is so the freak has time to enter without moving the elevator
-        yield return new WaitForSeconds(waitTime);
-
-        StartCoroutine(FreakEntersElevator());
-    }
-
-    private IEnumerator FreakEntersElevator()
-    {
-        Debug.Log("FreakEnterElevator is running...");
-        //***put request audio here***//
-
-        elevator.canPress = true;
-
-        float waitTime = Random.Range(4f, 8f);
-        Debug.Log("Waiting " + waitTime + " seconds before moving..."); //this is so the elevator gives time to press the request button before leaving
-        yield return new WaitForSeconds(waitTime);
-
-        Debug.Log("Closing Elevator!");
-
-        StartCoroutine(elevator.ElevatorClosing());
-    }
-
-    public void DetermineNextLocation(int pressedFloorIndex)
-    {
-        if (requestFloor == pressedFloorIndex)
-        {
-            elevator.priorityRequestActive = true;
-        }
-        else
-        {
-            elevator.priorityClosestActive = true;
         }
     }
 
@@ -85,35 +38,8 @@ public class CharacterRandomizer : MonoBehaviour
         {
             return;
         }
-
-        ///SCALABLE PARAMETERS///
-        skinColor = Random.ColorHSV(0f, 1f, 0.8f, 1f, 0.7f, 1f); //***change all the values to work with RGB***//
-        mouthColor = Random.ColorHSV(0f, 1f, 0.8f, 1f, 0.7f, 1f);
-        earColor = Random.ColorHSV(0f, 1f, 0.8f, 1f, 0.7f, 1f);
-
-        voiceType = Random.Range(0, 3); //***change range later based on amount of voices***//
+        skinColor = Random.Range(0, 6);
+        hatType = Random.Range(0, 3);
         personality = Random.Range(0, 3);
-
-        requestFloor = Random.Range(0, elevator.currentFloor); //calls a random number to be selected as the requested floor
-    }
-
-    public void SayGreeting()
-    {
-
-    }
-
-    public void SayNumber()
-    {
-
-    }
-
-    public void SayDialogue()
-    {
-
-    }
-
-    public void SayRemarks()
-    {
-
     }
 }
