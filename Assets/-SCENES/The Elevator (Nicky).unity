@@ -380,6 +380,12 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &531773375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2409921195077908328, guid: a736fc5bde6b5af4c83b681072f9c6c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 231590066172966185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619154073
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +522,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619154073}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &636025499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7263919397970604472, guid: cf9546b2bde48e7488adff9d58fbe554,
+    type: 3}
+  m_PrefabInstance: {fileID: 8419188312404402588}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &636025501
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636025499}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba7d2f66113d59e4085ca5fdb8143e25, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &704964640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elevator: {fileID: 1371622910}
-  freakPrefab: {fileID: 0}
+  freakPrefab: {fileID: 531773375}
   freakInElevator: 0
   requestFloor: 0
   skinColor: {r: 0, g: 0, b: 0, a: 0}
@@ -1183,11 +1217,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1371622907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e97a9895276b53649a74b3210d0a335a, type: 3}
+  m_Script: {fileID: 11500000, guid: b07717982a7d05f4ab315d92678aa19d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterRandomizer: {fileID: 1371622909}
-  elevatorAnim: {fileID: 0}
+  elevatorAnim: {fileID: 636025501}
   isRunning: 0
   canPress: 1
   buttonPressed: 0
@@ -1321,8 +1355,8 @@ Transform:
   m_GameObject: {fileID: 1748806384}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5774899, y: 1.209, z: 0.14231002}
-  m_LocalScale: {x: 0.19567, y: 0.19567, z: 0.19567}
+  m_LocalPosition: {x: 0.194, y: 1.146, z: 0.7058}
+  m_LocalScale: {x: 0.032232717, y: 0.032232717, z: 0.032232717}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 981068092}
@@ -1733,6 +1767,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.0000002416045
       objectReference: {fileID: 0}
+    - target: {fileID: 8412678381925768603, guid: a736fc5bde6b5af4c83b681072f9c6c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1760,12 +1799,12 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 288807334945320599, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 617028108780846980, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1840,22 +1879,22 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 1455150875823995995, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 1904224213456613655, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 1904224213456613655, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 2192977743414635188, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1880,22 +1919,22 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 2702205160554817372, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 2859939579974912934, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 2859939579974912934, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 2872348740520198565, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1910,12 +1949,12 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 2953317177281107569, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 3460672786837488721, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1930,12 +1969,12 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 3829955125767372970, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 4212303652290808030, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1945,22 +1984,22 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 4231298971688124838, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 4656481992181155636, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 4656481992181155636, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 4898334561267285937, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1970,12 +2009,12 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 4966947717576806773, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 4978477063840106433, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1985,22 +2024,22 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 5025249475378645327, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 5043935264853534808, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 5043935264853534808, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 5053095944433272020, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2015,22 +2054,22 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 5223496357698781983, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 5394157044582902359, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 5394157044582902359, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 5398167183216072465, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2040,12 +2079,12 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 5511200727664755350, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 5524012104871538105, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2065,42 +2104,42 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 5792026911569764086, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 6265484678955964756, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 6265484678955964756, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 6359444173566562839, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 6359444173566562839, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 6420563745314458287, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 6420563745314458287, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 6434171177097779268, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2115,52 +2154,52 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 6581850155293856110, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 6725483817384559378, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 6725483817384559378, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 6734979159328047532, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 6734979159328047532, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 6813358143495967373, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 6813358143495967373, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 6944792923165002209, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 6944792923165002209, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 7177293501225888949, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2170,12 +2209,12 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 7272665530836611865, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 7276807074941510303, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2190,12 +2229,12 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 7430509470225216043, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 7669030366647627542, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2225,46 +2264,50 @@ PrefabInstance:
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 8399520732540000074, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 8447452201585668991, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 8447452201585668991, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 8644460484095848212, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 8644460484095848212, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     - target: {fileID: 9220801156604351390, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622910}
     - target: {fileID: 9220801156604351390, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: characterRandomizer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371622909}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7263919397970604472, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 636025501}
   m_SourcePrefab: {fileID: 100100000, guid: cf9546b2bde48e7488adff9d58fbe554, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

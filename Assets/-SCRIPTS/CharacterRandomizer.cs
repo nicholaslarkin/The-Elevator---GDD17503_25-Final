@@ -44,6 +44,19 @@ public class CharacterRandomizer : MonoBehaviour
         freakInElevator = true;
         elevator.canPress = false;
 
+        #region Greetings Audio
+        //GREETINGS
+        switch (voiceType)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+        #endregion
+
         float waitTime = 7.5f;
         Debug.Log("Waiting " + waitTime + " seconds before moving..."); //this is so the freak has time to enter without moving the elevator
         yield return new WaitForSeconds(waitTime);
@@ -91,7 +104,18 @@ public class CharacterRandomizer : MonoBehaviour
         mouthColor = Random.ColorHSV(0f, 1f, 0.8f, 1f, 0.7f, 1f);
         earColor = Random.ColorHSV(0f, 1f, 0.8f, 1f, 0.7f, 1f);
 
-        voiceType = Random.Range(0, 3); //***change range later based on amount of voices***//
+        #region Voice/Personality Key
+        //Voices
+        //0 = Deep
+        //1 = Frog
+        //2 = Spain
+        //Personality
+        //0 = Good
+        //1 = Neutral Sorry
+        //2 = Bad
+        //3 = Bad Sorry
+        #endregion
+        voiceType = Random.Range(0, 2); //***change range later based on amount of voices***//
         personality = Random.Range(0, 3);
 
         requestFloor = Random.Range(0, elevator.currentFloor); //calls a random number to be selected as the requested floor

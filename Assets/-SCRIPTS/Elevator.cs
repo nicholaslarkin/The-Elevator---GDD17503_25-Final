@@ -89,8 +89,8 @@ public class Elevator : MonoBehaviour
 
             else
             {
-                Debug.LogError("None of the priorities were true; failsafing to WinConFloor");
-                yield return StartCoroutine(GoToWinConFloor()); //failsafe in case none of the values become true
+                Debug.LogError("There's no more floors to go to! Stopping routine w/ freak inside!");
+                isRunning = false;
             }
 
             priorityRequestActive = false;
