@@ -40,6 +40,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6219359341436738830}
+  - component: {fileID: 5713370741187499684}
+  - component: {fileID: 3168937028174918609}
   m_Layer: 0
   m_Name: Armature
   m_TagString: Untagged
@@ -63,6 +65,47 @@ Transform:
   - {fileID: 3326619897719345037}
   m_Father: {fileID: 3810586194583033532}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &5713370741187499684
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819664958026109217}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!320 &3168937028174918609
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819664958026109217}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: d6628604c5ff034439fbad2494695508, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -6082988666298629306, guid: d6628604c5ff034439fbad2494695508, type: 2}
+    value: {fileID: 5713370741187499684}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &1273046201077532517
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,13 +268,13 @@ MonoBehaviour:
   attackMultiplier: 5
   releaseMultiplier: 1
   driveAnimator: 0
-  animator: {fileID: 2894052355477834906}
+  animator: {fileID: 0}
   animatorParameter: MouthOpen
   driveBlendshape: 0
-  skinnedMeshRenderer: {fileID: 7454687204571470443}
+  skinnedMeshRenderer: {fileID: 0}
   blendshapeIndex: 0
   driveTimeline: 1
-  playableDirector: {fileID: 1508194598845226053}
+  playableDirector: {fileID: 3168937028174918609}
   timelineStartSeconds: 0
   timelineEndSeconds: 1
   pauseDirectorOnAwake: 0
