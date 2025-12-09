@@ -333,8 +333,20 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Apartments
+  - End
+  - Fire
+  - Forest
+  - Hungry Freak
   - Music
   - SFX
+  - Storm
+  - Voice_General
+  - Voice_Greetings
+  - Voice_Leaving
+  - Voice_Numbers
+  - Voice_Remarks
+  - Void
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

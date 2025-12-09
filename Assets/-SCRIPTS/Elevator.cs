@@ -3,12 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
+using TMPro;
+using FMODUnity;
+using FMOD.Studio;
 using static UnityEngine.GraphicsBuffer;
 
 public class Elevator : MonoBehaviour
 {
     public CharacterRandomizer characterRandomizer;
+    public Rooms rooms;
     public Animator elevatorAnim;
+    public TextMeshProUGUI elevatorDisplayNumber;
 
     [Header("Coroutine")]
     [SerializeField] private bool isRunning = false;
@@ -42,6 +47,8 @@ public class Elevator : MonoBehaviour
 
     void Update()
     {
+        elevatorDisplayNumber.text = currentFloor.ToString();
+
         if (!isRunning && buttonPressed && floorCount.Contains(true))
         {
             StartCoroutine(ElevatorRoutine());
@@ -51,6 +58,8 @@ public class Elevator : MonoBehaviour
     private IEnumerator ElevatorRoutine()
     {
         isRunning = true;
+
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorMoving, this.transform.position);
 
         #region Stop Floor Setup
         if (!stopFloorSet && !characterRandomizer.freakInElevator)
@@ -146,6 +155,7 @@ public class Elevator : MonoBehaviour
         #endregion
 
         isRunning = false; //can re-trigger again next frame if another switch is active
+        //StartCoroutine(ElevatorOpening());
     }
 
     #region RequestFloor
@@ -181,7 +191,7 @@ public class Elevator : MonoBehaviour
 
         floorCount[currentFloor] = false;
         characterRandomizer.freakInElevator = false;
-        Debug.Log("Returning To Regularly Scheduled Coroutine");
+        StartCoroutine(ElevatorOpening());
     }
     #endregion
 
@@ -237,8 +247,8 @@ public class Elevator : MonoBehaviour
             yield return StartCoroutine(GoToClosestFloor());
         }
 
-        ElevatorOpening();
         Debug.Log("Arrived at closest floor!");
+        StartCoroutine(ElevatorOpening());
     }
     #endregion
 
@@ -300,7 +310,12 @@ public class Elevator : MonoBehaviour
 
     public IEnumerator ElevatorOpening()
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorStopping, this.transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorConfirm, this.transform.position);
+        Debug.Log("Elevator Opening!");
         elevatorAnim.Play("ElevatorOpen");
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorOpening, this.transform.position);
+        rooms.ActivateRandomRoom();
 
         float waitTime = Random.Range(3f, 6f);
         Debug.Log("Waiting " + waitTime + " seconds before moving...");
@@ -311,12 +326,16 @@ public class Elevator : MonoBehaviour
 
     public IEnumerator ElevatorClosing()
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorConfirm, this.transform.position);
+        Debug.Log("Elevator Closing!");
         elevatorAnim.Play("ElevatorClose");
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorClosing, this.transform.position);
 
         float waitTime = Random.Range(3f, 6f);
         Debug.Log("Waiting " + waitTime + " seconds before moving...");
         yield return new WaitForSeconds(waitTime);
 
+        rooms.ResetRoom();
         StartCoroutine(ElevatorRoutine());
     }
 

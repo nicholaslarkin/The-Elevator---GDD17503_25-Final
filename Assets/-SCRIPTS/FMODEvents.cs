@@ -11,7 +11,12 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference music { get; private set; }
 
     [field: Header("SFX")]
-    [field: SerializeField] public EventReference buttonPressed { get; private set; } 
+    [field: SerializeField] public EventReference buttonPressed { get; private set; }
+    [field: SerializeField] public EventReference elevatorOpening { get; private set; }
+    [field: SerializeField] public EventReference elevatorClosing { get; private set; }
+    [field: SerializeField] public EventReference elevatorMoving { get; private set; }
+    [field: SerializeField] public EventReference elevatorStopping { get; private set; }
+    [field: SerializeField] public EventReference elevatorConfirm { get; private set; }
 
     public static FMODEvents instance { get; private set; }
 

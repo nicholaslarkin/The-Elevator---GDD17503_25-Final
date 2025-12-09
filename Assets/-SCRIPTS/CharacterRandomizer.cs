@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
+using FMODUnity;
+using FMOD.Studio;
 
 public class CharacterRandomizer : MonoBehaviour
 {
@@ -37,6 +39,7 @@ public class CharacterRandomizer : MonoBehaviour
     public IEnumerator FreakSpawner()
     {
         Debug.Log("FreakSpawner is running!");
+        StartCoroutine(elevator.ElevatorOpening());
 
         Randomize();
 
@@ -68,6 +71,22 @@ public class CharacterRandomizer : MonoBehaviour
     {
         Debug.Log("FreakEnterElevator is running...");
         //***put request audio here***//
+
+        elevator.canPress = true;
+
+        float waitTime = Random.Range(4f, 8f);
+        Debug.Log("Waiting " + waitTime + " seconds before moving..."); //this is so the elevator gives time to press the request button before leaving
+        yield return new WaitForSeconds(waitTime);
+
+        Debug.Log("Closing Elevator!");
+
+        StartCoroutine(elevator.ElevatorClosing());
+    }
+
+    private IEnumerator FreakLeavesElevator()
+    {
+        Debug.Log("FreakLeavesElevator is running...");
+        //***put leaving audio here***//
 
         elevator.canPress = true;
 
