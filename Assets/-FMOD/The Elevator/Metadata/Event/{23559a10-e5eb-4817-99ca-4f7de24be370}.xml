@@ -5,7 +5,7 @@
 			<value>AU Victory</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c40c2ad1-0354-4b7e-a469-ec60f5184238}</destination>
@@ -27,6 +27,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{47431beb-8d4f-4eaf-b605-256c966c70c2}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{cb3552c9-6d18-4b23-b9d4-eb125c7293b8}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{a73a2e7f-e96a-4c63-b83a-21c2de411152}">
@@ -77,9 +80,11 @@
 	<object class="MixerBusEffectChain" id="{7ebf6db3-9dd9-4972-a49e-ccde868eff76}">
 		<relationship name="effects">
 			<destination>{fd839465-0c63-4619-9247-124dc404f370}</destination>
+			<destination>{e23e276d-bf86-4a6b-8878-7e41d27109f4}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{0808c9b3-f2e6-4e27-b3cd-b1a9650730ef}" />
 	<object class="MixerBusFader" id="{3edc7aad-487b-4ae4-9d06-6876e49ae1fc}" />
 	<object class="MixerBusFader" id="{fd839465-0c63-4619-9247-124dc404f370}" />
+	<object class="SpatialiserEffect" id="{e23e276d-bf86-4a6b-8878-7e41d27109f4}" />
 </objects>

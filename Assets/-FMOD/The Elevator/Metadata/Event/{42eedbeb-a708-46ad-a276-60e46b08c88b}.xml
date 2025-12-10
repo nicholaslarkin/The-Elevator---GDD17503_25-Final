@@ -5,7 +5,7 @@
 			<value>War Siren</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{fd7add94-8004-40dc-bb74-2ce614ecb76e}</destination>
@@ -95,6 +95,7 @@
 	<object class="MixerBusEffectChain" id="{ecb8ec36-3b9b-4742-a8fd-04f2e90c662a}">
 		<relationship name="effects">
 			<destination>{49edd45a-2084-4b56-8fd5-399fae5a51dc}</destination>
+			<destination>{06d90c7f-d93e-4df5-9351-d9e4eda06a46}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{c2f870e6-0220-4da0-b705-5829c76633f6}" />
@@ -106,5 +107,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{86e27baa-7a85-404b-8d7f-bfaf12110bb6}" />
 	<object class="MixerBusFader" id="{49edd45a-2084-4b56-8fd5-399fae5a51dc}" />
+	<object class="SpatialiserEffect" id="{06d90c7f-d93e-4df5-9351-d9e4eda06a46}" />
 	<object class="MixerBusFader" id="{648f3cb1-539a-4188-b538-5e6d09120a5e}" />
 </objects>

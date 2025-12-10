@@ -5,7 +5,7 @@
 			<value>Ominous Humming</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{a0d4a630-f0b1-474c-9c02-20355ada9e52}</destination>
@@ -122,6 +122,7 @@
 	<object class="MixerBusEffectChain" id="{ae8d35c6-92f9-4dd7-ae85-c6a96ae3be99}">
 		<relationship name="effects">
 			<destination>{1eed8fee-aa38-4229-88d8-3632f0b5f861}</destination>
+			<destination>{281fe05c-5137-470b-9089-a8d9c067c9af}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{1cc01de7-df47-4478-9ae4-29ef85e684a7}" />
@@ -141,6 +142,7 @@
 	</object>
 	<object class="MixerBusPanner" id="{0c8d9897-9387-4507-ad92-019f6568cce8}" />
 	<object class="MixerBusFader" id="{1eed8fee-aa38-4229-88d8-3632f0b5f861}" />
+	<object class="SpatialiserEffect" id="{281fe05c-5137-470b-9089-a8d9c067c9af}" />
 	<object class="AutomationPoint" id="{700c653c-cda1-4c9f-a511-f1f7c8718be1}">
 		<property name="position">
 			<value>5.5</value>

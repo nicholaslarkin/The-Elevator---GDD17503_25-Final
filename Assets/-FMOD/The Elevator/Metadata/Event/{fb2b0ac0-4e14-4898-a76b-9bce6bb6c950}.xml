@@ -5,7 +5,7 @@
 			<value>Fire Startup</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{e32344ff-47f2-43c2-b79b-f49743928404}</destination>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{10d16d35-58aa-4e3e-8b29-9b9aad4005a8}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{67ecad3b-72a0-49b8-b06b-4aadb90b7fde}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{2773104c-50ce-4969-8eb3-ada4918fc6bd}">
@@ -87,10 +90,10 @@
 	<object class="MixerBusPanner" id="{53cbdc77-8133-438a-a0a3-1e8697fcd7f9}" />
 	<object class="SingleSound" id="{7223fc16-cb3b-413e-b93f-53ad63cf7c4b}">
 		<property name="length">
-			<value>4.5383673469387755</value>
+			<value>4.1012979792902371</value>
 		</property>
 		<property name="timelockedOffset">
-			<value>4.5</value>
+			<value>4.9370693676485384</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{69444809-024c-4fa7-af6f-e4cd2f714000}</destination>
@@ -113,6 +116,7 @@
 	<object class="MixerBusEffectChain" id="{d80a4459-71d9-49fe-8c6a-ba7a73d1ef1c}">
 		<relationship name="effects">
 			<destination>{a8078469-97bb-4053-94df-1a6760380b1a}</destination>
+			<destination>{409e8c9f-9eba-4f04-9ab2-366a0f4f15b0}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{2e6b83ff-9f34-413a-81df-8f42e67a9285}" />
@@ -124,5 +128,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{6acba41a-4b44-45bc-b4a3-04439aa63f47}" />
 	<object class="MixerBusFader" id="{a8078469-97bb-4053-94df-1a6760380b1a}" />
+	<object class="SpatialiserEffect" id="{409e8c9f-9eba-4f04-9ab2-366a0f4f15b0}" />
 	<object class="MixerBusFader" id="{48a57306-bd49-4e89-a29f-f40e3ef985c5}" />
 </objects>

@@ -5,7 +5,7 @@
 			<value>James_Deep_General</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{09d32883-e60f-4e63-92ad-47e251058c26}</destination>
@@ -136,6 +136,7 @@
 	<object class="MixerBusEffectChain" id="{1fb31967-93df-461a-8912-7fff9c6684ab}">
 		<relationship name="effects">
 			<destination>{4ead7674-c86c-4e46-8afc-c1a04e86c806}</destination>
+			<destination>{a833c3f1-0b35-4881-8653-4f265cfa4565}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{82d0816d-75b2-4866-830d-9c356fd70658}" />
@@ -147,5 +148,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{a2b30da8-b11e-4ca1-8438-27a864ea025b}" />
 	<object class="MixerBusFader" id="{4ead7674-c86c-4e46-8afc-c1a04e86c806}" />
+	<object class="SpatialiserEffect" id="{a833c3f1-0b35-4881-8653-4f265cfa4565}" />
 	<object class="MixerBusFader" id="{753dabf9-7bf2-4155-9f94-3156292911c9}" />
 </objects>

@@ -5,7 +5,7 @@
 			<value>Eerie Singing</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{a0d4a630-f0b1-474c-9c02-20355ada9e52}</destination>
@@ -73,9 +73,11 @@
 	<object class="MixerBusEffectChain" id="{115fc256-d686-46e3-962c-b1d295d15f7f}">
 		<relationship name="effects">
 			<destination>{188e1f7f-e199-494f-b9a2-cf9cfd8f99b6}</destination>
+			<destination>{3c7ea7a4-3341-4ce1-a0e3-e8e0ef2f00d8}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{feb2cfe3-61c2-41ea-a29d-cded7304dd3f}" />
 	<object class="MixerBusFader" id="{36742cce-5a99-4e94-b7c3-0dae845268fc}" />
 	<object class="MixerBusFader" id="{188e1f7f-e199-494f-b9a2-cf9cfd8f99b6}" />
+	<object class="SpatialiserEffect" id="{3c7ea7a4-3341-4ce1-a0e3-e8e0ef2f00d8}" />
 </objects>

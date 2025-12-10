@@ -5,7 +5,7 @@
 			<value>Brown Noise</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{a0d4a630-f0b1-474c-9c02-20355ada9e52}</destination>
@@ -113,6 +113,7 @@
 	<object class="MixerBusEffectChain" id="{e7b96532-4687-4224-a5b2-b980d3adfa44}">
 		<relationship name="effects">
 			<destination>{dcf3cd29-b654-48fb-983a-92b2ff68ae2a}</destination>
+			<destination>{125dec66-234e-41ca-8b21-f68568fc4df9}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{7043d156-4e4a-4cf9-8680-8edbabde7bc6}" />
@@ -124,5 +125,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{206a15bf-701d-4d28-991d-5bb5cc212215}" />
 	<object class="MixerBusFader" id="{dcf3cd29-b654-48fb-983a-92b2ff68ae2a}" />
+	<object class="SpatialiserEffect" id="{125dec66-234e-41ca-8b21-f68568fc4df9}" />
 	<object class="MixerBusFader" id="{8c320a11-a886-4848-a80d-6bfcbd721986}" />
 </objects>

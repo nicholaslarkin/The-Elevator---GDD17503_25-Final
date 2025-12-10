@@ -5,7 +5,7 @@
 			<value>James_Frog_Greeting</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{067b4dbd-02c0-4404-b174-1449428bc61b}</destination>
@@ -95,6 +95,7 @@
 	<object class="MixerBusEffectChain" id="{65b4a005-777a-411e-be2c-45fbdba5d23b}">
 		<relationship name="effects">
 			<destination>{e6e1429d-c774-446e-a4c8-8bd7f2afa1fb}</destination>
+			<destination>{b7645520-e735-4bbf-96c1-08ba3224f552}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{bca83f1a-71ef-4826-a373-852bbb3d98dd}" />
@@ -106,5 +107,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{1b7ddf6b-8d30-4bc2-aaf5-2ac271a4eabd}" />
 	<object class="MixerBusFader" id="{e6e1429d-c774-446e-a4c8-8bd7f2afa1fb}" />
+	<object class="SpatialiserEffect" id="{b7645520-e735-4bbf-96c1-08ba3224f552}" />
 	<object class="MixerBusFader" id="{035cfb2d-d0f1-4e5f-be47-a3febdf4443d}" />
 </objects>
