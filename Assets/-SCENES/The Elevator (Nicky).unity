@@ -1103,7 +1103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &704964641
 Transform:
   m_ObjectHideFlags: 0
@@ -1298,6 +1298,14 @@ PrefabInstance:
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 1531074722}
+    - targetCorrespondingSourceObject: {fileID: 5168190094464846404, guid: a930d6c599f063240a06554b66ff0655,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1899308127}
+    - targetCorrespondingSourceObject: {fileID: 5168190094464846404, guid: a930d6c599f063240a06554b66ff0655,
+        type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1413824244}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a930d6c599f063240a06554b66ff0655, type: 3}
 --- !u!1001 &838617521
@@ -1477,7 +1485,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7873096942665289513, guid: a9339dd622150d047b7908fea107309c,
+        type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 1068290878}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9339dd622150d047b7908fea107309c, type: 3}
 --- !u!1 &909144025
@@ -75444,6 +75456,10 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5769068064926670607, guid: cd2c48b06ba293a4eb21144bcdf51303,
         type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 1901030885}
+    - targetCorrespondingSourceObject: {fileID: 5769068064926670607, guid: cd2c48b06ba293a4eb21144bcdf51303,
+        type: 3}
       insertIndex: -1
       addedObject: {fileID: 258812905}
     m_AddedComponents:
@@ -75483,6 +75499,69 @@ PlayableDirector:
     value: {fileID: 258812902}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &1068290877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1068290878}
+  - component: {fileID: 1068290879}
+  m_Layer: 0
+  m_Name: Audio Ending
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1068290878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068290877}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.412, y: 2.7800002, z: -1.4330002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1773648572}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1068290879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068290877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 592812560
+      Data2: 1209525739
+      Data3: 2102381209
+      Data4: 1893944290
+    Path: event:/Room/End/AU Victory
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &1092595350 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 819710204902657193, guid: cf9546b2bde48e7488adff9d58fbe554,
@@ -75580,6 +75659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1239498141}
   - component: {fileID: 1239498140}
+  - component: {fileID: 1239498142}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -75663,6 +75743,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1239498142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239498139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b1243d8e741fa849ab41b40a6976280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1271062199
 GameObject:
   m_ObjectHideFlags: 0
@@ -76031,6 +76123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07717982a7d05f4ab315d92678aa19d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
+  stateDescription: 
   characterRandomizer: {fileID: 1371622909}
   rooms: {fileID: 1371622912}
   elevatorAnim: {fileID: 636025501}
@@ -76095,6 +76189,69 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 838617521}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1413824243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1413824244}
+  - component: {fileID: 1413824245}
+  m_Layer: 0
+  m_Name: Audio Ominous Humming
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1413824244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413824243}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.431, y: 2.442, z: 0.21799994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1960864701}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1413824245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413824243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1793873666
+      Data2: 1220735176
+      Data3: 927086266
+      Data4: 873997544
+    Path: event:/Room/Void/Ominous Humming
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1461155277
 GameObject:
   m_ObjectHideFlags: 0
@@ -76166,6 +76323,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 107946, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -76283,11 +76444,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1848569458
-      Data2: 1276175858
-      Data3: -510098754
-      Data4: 1148508238
-    Path: event:/Room/Fire/Afton Yelling
+      Data1: 1439453459
+      Data2: 1207249893
+      Data3: -1376534135
+      Data4: 1519336040
+    Path: event:/Room/Void/Brown Noise
   Event: 
   EventPlayTrigger: 11
   EventStopTrigger: 12
@@ -76783,6 +76944,69 @@ PrefabInstance:
       addedObject: {fileID: 1899637020}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8601369916751d644ae1857598e31b7b, type: 3}
+--- !u!1 &1899308126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899308127}
+  - component: {fileID: 1899308128}
+  m_Layer: 0
+  m_Name: Audio Eerie Singing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1899308127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899308126}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.431, y: 2.442, z: 0.21799994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1960864701}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1899308128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899308126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 494389352
+      Data2: 1136260836
+      Data3: 2113773496
+      Data4: 422366708
+    Path: event:/Room/Void/Eerie Singing
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1899637019
 GameObject:
   m_ObjectHideFlags: 0
@@ -76835,6 +77059,69 @@ MonoBehaviour:
       Data3: -835278168
       Data4: 1257594528
     Path: event:/Room/Apartments/Fluorescent Bulbs
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!1 &1901030884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901030885}
+  - component: {fileID: 1901030886}
+  m_Layer: 0
+  m_Name: Audio Forest Amb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901030885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901030884}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.046000004, y: -12.754, z: -6.9830003}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1054371561}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901030886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901030884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1505073229
+      Data2: 1198288147
+      Data3: 503889339
+      Data4: 1012308239
+    Path: event:/Room/Forest/Forest Ambience
   Event: 
   EventPlayTrigger: 11
   EventStopTrigger: 12
@@ -77428,6 +77715,68 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 748136591102530870, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 748136591102530870, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0151
+      objectReference: {fileID: 0}
+    - target: {fileID: 819710204902657193, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d732718263efed48a5880850bba2f9c,
+        type: 2}
+    - target: {fileID: 819710204902657193, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 819710204902657193, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 819710204902657193, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.60621077
+      objectReference: {fileID: 0}
+    - target: {fileID: 819710204902657193, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 819710204902657193, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6655165582994909131, guid: 5d732718263efed48a5880850bba2f9c,
+        type: 2}
+    - target: {fileID: 819710204902657193, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278230015
+      objectReference: {fileID: 0}
+    - target: {fileID: 819710204902657193, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 819710204902657193, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 994469663863132272, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bc4bf338d71f81a4d926c4727a07f916, type: 2}
     - target: {fileID: 1455150875823995995, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator
@@ -77448,6 +77797,11 @@ PrefabInstance:
       propertyPath: characterRandomizer
       value: 
       objectReference: {fileID: 1371622909}
+    - target: {fileID: 2082379126241821107, guid: cf9546b2bde48e7488adff9d58fbe554,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.002
+      objectReference: {fileID: 0}
     - target: {fileID: 2702205160554817372, guid: cf9546b2bde48e7488adff9d58fbe554,
         type: 3}
       propertyPath: elevator

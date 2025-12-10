@@ -27,6 +27,7 @@ public class Elevator_Buttons : MonoBehaviour
         // Directly modify the bool list inside Elevator when hand(any rigidbody) touches button
         elevator.floorCount[floorIndex] = true;
         elevator.buttonPressed = true;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonPressed, this.transform.position);
 
         if (!characterRandomizer.freakInElevator)
         {

@@ -10,6 +10,24 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Elevator : MonoBehaviour
 {
+    public enum ElevatorState
+    {
+        Idle,
+        WaitingForInput,
+        Moving_NoFreak,
+        Moving_RequestFloor,
+        Moving_ClosestFloor,
+        Moving_WinCon,
+        DoorsOpening,
+        DoorsClosing,
+        SpawningFreak,
+        FreakRemarks
+    }
+
+    [Header("Debug State (Read Only)")]
+    [SerializeField] private ElevatorState currentState = ElevatorState.Idle;
+    [SerializeField, TextArea] private string stateDescription = "";
+
     public CharacterRandomizer characterRandomizer;
     public Rooms rooms;
     public Animator elevatorAnim;
@@ -19,7 +37,7 @@ public class Elevator : MonoBehaviour
     [SerializeField] private bool isRunning = false;
     [SerializeField] public bool canPress = true;
     [SerializeField] public bool buttonPressed = false;
-    [SerializeField] private bool stopFloorSet = false; //bool setup to prevent stopFloor from changing every coroutine run
+    [SerializeField] private bool stopFloorSet = false; // currently not used for logic, kept for future behavior
 
     [Header("Priority List")]
     [SerializeField] public bool priorityRequestActive;
@@ -27,10 +45,9 @@ public class Elevator : MonoBehaviour
     [SerializeField] public bool priorityWinConActive;
 
     #region Priority List
-    // ***Requested Floor (makes sure as long as you press the requested floor, the freak won't exit to another random floor, ruining your intentions)***
-    // ***Closest Floor (if requested floor is not selected, dropping the freak off as soon as possible is the immediate priority)***
-    // ***Win Con Floor (if neither condition is met, then the win con floor is aimed for; the ONLY way to get to the win con floor should be if the... 
-    // ...requested and closest floors are ignored when a freak is in the elevator, in other words, only the win con is selected)***
+    // Requested Floor (highest priority)
+    // Closest Floor (second priority)
+    // Win Con Floor (third priority)
     #endregion
 
     [Header("Floors")]
@@ -42,7 +59,10 @@ public class Elevator : MonoBehaviour
     void Start()
     {
         currentFloor = Random.Range(0, 16);
-        winConFloor = Random.Range(20, 31);
+        // floorCount has indices 0–29, so winConFloor should be 20–29
+        winConFloor = Random.Range(20, 30);
+
+        SetState(ElevatorState.WaitingForInput, "Elevator initialized. Waiting for button press.");
     }
 
     void Update()
@@ -53,71 +73,85 @@ public class Elevator : MonoBehaviour
         {
             StartCoroutine(ElevatorRoutine());
         }
+        else if (!isRunning && !buttonPressed)
+        {
+            SetState(ElevatorState.WaitingForInput, "Idle. Waiting for button press.");
+        }
+    }
+
+    private void SetState(ElevatorState newState, string description = "")
+    {
+        currentState = newState;
+        stateDescription = description;
     }
 
     private IEnumerator ElevatorRoutine()
     {
         isRunning = true;
 
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorMoving, this.transform.position);
-
-        #region Stop Floor Setup
-        if (!stopFloorSet && !characterRandomizer.freakInElevator)
+        // Safety: if there's nothing to do and no freak inside, just bail
+        if (!characterRandomizer.freakInElevator && !floorCount.Contains(true))
         {
-            stopFloor = Random.Range(currentFloor + 1, winConFloor);
-            stopFloorSet = true;
+            SetState(ElevatorState.Idle, "No pending floors and no freak. Going idle.");
+            isRunning = false;
+            buttonPressed = false;
+            yield break;
         }
-        #endregion
 
-        #region Elevator Floor Timer
-        //goes through the floors slowly and gradually, like a real elevator
+        // goes through the floors slowly and gradually, like a real elevator
         float waitTime = Random.Range(4f, 8f);
         Debug.Log("Waiting " + waitTime + " seconds before moving...");
         yield return new WaitForSeconds(waitTime);
-        #endregion
 
         #region Freak is in elevator
-        if (characterRandomizer.freakInElevator) //IS freak of nature fucker fuckington in the elevator? Run this shit.
+        if (characterRandomizer.freakInElevator) // freak is in the elevator: use priorities ONLY
         {
-            //STOP FLOOR IS (NOT) USED
-
+            // PRIORITY ORDER: Request > Closest > WinCon
             if (priorityRequestActive)
             {
+                SetState(ElevatorState.Moving_RequestFloor, $"Moving to request floor {characterRandomizer.requestFloor}.");
                 yield return StartCoroutine(GoToRequestFloor());
             }
-
-            if (priorityClosestActive)
+            else if (priorityClosestActive)
             {
+                SetState(ElevatorState.Moving_ClosestFloor, "Executing priority: Closest floor.");
                 yield return StartCoroutine(GoToClosestFloor());
             }
-
-            if (priorityWinConActive)
+            else if (priorityWinConActive)
             {
+                SetState(ElevatorState.Moving_WinCon, $"Moving to WinCon floor {winConFloor}.");
                 yield return StartCoroutine(GoToWinConFloor());
             }
-
             else
             {
-                Debug.LogError("There's no more floors to go to! Stopping routine w/ freak inside!");
-                isRunning = false;
+                Debug.LogWarning("Freak is in the elevator, but no priority flag is set. Doing nothing this cycle.");
+                SetState(ElevatorState.Idle, "Freak inside but no priority set. Standing by.");
             }
 
+            // Reset priorities after we've handled the freak case
             priorityRequestActive = false;
             priorityClosestActive = false;
             priorityWinConActive = false;
 
-            Debug.Log("Freak is in the elevator, running specific code for this!");
+            Debug.Log("Freak was in the elevator, priority logic completed.");
+            isRunning = false;
+            // IMPORTANT: don't fall through into the "no freak" logic in the same routine
+            yield break;
         }
         #endregion
 
         #region Freak is NOT in elevator
-        if (!characterRandomizer.freakInElevator)
+        else // no freak in elevator
         {
-            int spawnFreak = Random.Range(0, 4); //rolls for a chance to spawn a freak every time this routine is ran
+            SetState(ElevatorState.Moving_NoFreak, "No freak. Moving based on selected floors.");
 
-            if (spawnFreak == 0 || currentFloor == stopFloor) //if a roll is successful (20%)
+            // First: roll for freak spawn chance at the current floor
+            int spawnFreak = Random.Range(0, 4); // 25% chance
+
+            if (spawnFreak == 0)
             {
                 Debug.Log("Freak is being spawned...");
+                SetState(ElevatorState.SpawningFreak, $"Spawning freak at floor {currentFloor}.");
                 buttonPressed = false;
                 isRunning = false;
                 stopFloorSet = false;
@@ -125,51 +159,36 @@ public class Elevator : MonoBehaviour
                 yield break;
             }
 
-            //STOP FLOOR IS (INDEED) USED
-            if (currentFloor < winConFloor) //always moving towards winConFloor if bigger
+            // If there are floors selected, go to the closest one
+            if (floorCount.Contains(true))
             {
-                currentFloor++;
-                floorCount[currentFloor] = false; //***CHANGE LINE LATER; weird to have floors set to false if they aren't being opened?***
+                SetState(ElevatorState.Moving_ClosestFloor, "No freak inside. Going to closest selected floor.");
+                yield return StartCoroutine(GoToClosestFloor());
+                isRunning = false;
+                yield break;
             }
 
-            else if (currentFloor > winConFloor) //always moving towards winConFloor if smaller
-            {
-                currentFloor--;
-                floorCount[currentFloor] = false; //***CHANGE LINE LATER; weird to have floors set to false if they aren't being opened?***
-            }
-
-            else if (floorCount[currentFloor])
-            {
-                floorCount[currentFloor] = false;
-            }
-
-            /*if (currentFloor == stopFloor || floorCount[currentFloor]) //stops execution when the default stopFloor is met
-            {
-                Debug.Log("Stopped at random floor before win!"); //***INSERT EVENT HERE (GENERATE FREAK)***
-                stopFloorSet = false; //Stop Floor wont EVER change unless the execution of the coroutine here STOPS
-            }*/
-
-            Debug.Log("Current floor: " + currentFloor);
-            Debug.Log("No freak in the elevator, acting accordingly!");
+            // If somehow we got here with no floors, just idle
+            SetState(ElevatorState.Idle, "No floors selected and no freak. Going idle.");
         }
         #endregion
 
         isRunning = false; //can re-trigger again next frame if another switch is active
-        //StartCoroutine(ElevatorOpening());
+        SetState(ElevatorState.WaitingForInput, "Finished automatic move. Waiting for next input.");
     }
 
     #region RequestFloor
     private IEnumerator GoToRequestFloor()
     {
         Debug.Log("Going To Request Floor!");
-
-        //***GET REQUEST FLOOR VALUE FROM FREAK HERE ONCE WRITTEN OUT***
+        SetState(ElevatorState.Moving_RequestFloor, $"Heading toward request floor {characterRandomizer.requestFloor}.");
 
         while (currentFloor != characterRandomizer.requestFloor)
         {
             //goes through the floors slowly and gradually, like a real elevator
             float waitTime = Random.Range(4f, 8f);
             Debug.Log("Waiting " + waitTime + " seconds before moving...");
+            SetState(ElevatorState.Moving_RequestFloor, $"Moving toward request floor {characterRandomizer.requestFloor} (currently on {currentFloor}).");
             yield return new WaitForSeconds(waitTime);
 
             if (currentFloor < characterRandomizer.requestFloor)
@@ -183,15 +202,15 @@ public class Elevator : MonoBehaviour
 
             if (currentFloor == characterRandomizer.requestFloor)
             {
-                Debug.Log("We at the freak's floor! Now they're happy :0)!!!"); //***add win state later, probably just call a seperate win function written later***
-
+                Debug.Log("We at the freak's floor! Now they're happy :0)!!!");
+                SetState(ElevatorState.Moving_RequestFloor, $"Arrived at request floor {currentFloor}.");
                 yield return new WaitForSeconds(1f);
             }
         }
 
         floorCount[currentFloor] = false;
         characterRandomizer.freakInElevator = false;
-        StartCoroutine(ElevatorOpening());
+        yield return StartCoroutine(ElevatorOpening());
     }
     #endregion
 
@@ -204,15 +223,20 @@ public class Elevator : MonoBehaviour
 
         if (closest == -1)
         {
-            Debug.LogError("No closest floor found! Going to WinCon"); //shouldn't really happen; but just in case
-            yield return StartCoroutine(GoToWinConFloor());
+            Debug.LogError("No closest floor found! Nothing left to visit.");
+            SetState(ElevatorState.Idle, "No closest floor found. Nothing left to visit.");
             yield break;
         }
 
+        SetState(ElevatorState.Moving_ClosestFloor, $"Beginning closest-floor logic. Target: floor {closest}.");
+
         while (currentFloor != closest) //loop to go to closest floor relative to current floor
         {
+            // If during travel, a request floor becomes active, let the main routine handle that on next cycle
             if (priorityRequestActive)
             {
+                Debug.Log("Priority request became active mid-travel; aborting closest-floor run.");
+                SetState(ElevatorState.Moving_RequestFloor, "Request priority activated mid-travel. Aborting closest floor movement.");
                 isRunning = false;
                 yield break;
             }
@@ -220,13 +244,13 @@ public class Elevator : MonoBehaviour
             //goes through the floors slowly and gradually, like a real elevator
             float waitTime = Random.Range(4f, 8f);
             Debug.Log("Waiting " + waitTime + " seconds before moving...");
+            SetState(ElevatorState.Moving_ClosestFloor, $"Moving toward closest floor {closest}. Currently at {currentFloor}.");
             yield return new WaitForSeconds(waitTime);
 
             if (currentFloor < closest)
             {
                 currentFloor++;
             }
-
             else if (currentFloor > closest)
             {
                 currentFloor--;
@@ -235,20 +259,20 @@ public class Elevator : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
+        // We've arrived at the closest floor
         if (characterRandomizer.freakInElevator)
         {
             characterRandomizer.freakInElevator = false;
-            FreakGivesTheirRemarks();
+            SetState(ElevatorState.FreakRemarks, $"Arrived at closest floor {currentFloor}. Freak giving remarks.");
+            yield return StartCoroutine(FreakGivesTheirRemarks());
         }
 
         floorCount[currentFloor] = false;
-        if (floorCount.Contains(true))
-        {
-            yield return StartCoroutine(GoToClosestFloor());
-        }
 
         Debug.Log("Arrived at closest floor!");
-        StartCoroutine(ElevatorOpening());
+        SetState(ElevatorState.DoorsOpening, $"Arrived at closest floor {currentFloor}. Opening doors.");
+        // Open the elevator; ElevatorRoutine will only restart if appropriate conditions are met
+        yield return StartCoroutine(ElevatorOpening());
     }
     #endregion
 
@@ -256,12 +280,14 @@ public class Elevator : MonoBehaviour
     private IEnumerator GoToWinConFloor()
     {
         Debug.Log("Going To Win Con Floor!");
+        SetState(ElevatorState.Moving_WinCon, $"Heading toward WinCon floor {winConFloor}.");
 
         while (currentFloor != winConFloor)
         {
             //goes through the floors slowly and gradually, like a real elevator
             float waitTime = Random.Range(4f, 8f);
             Debug.Log("Waiting " + waitTime + " seconds before moving...");
+            SetState(ElevatorState.Moving_WinCon, $"Moving toward WinCon floor {winConFloor}. Currently at {currentFloor}.");
             yield return new WaitForSeconds(waitTime);
 
             if (currentFloor < winConFloor)
@@ -275,8 +301,8 @@ public class Elevator : MonoBehaviour
 
             if (currentFloor == winConFloor)
             {
-                Debug.Log("WINNER!"); //***add win state later, probably just call a seperate win function written later***
-
+                Debug.Log("WINNER!");
+                SetState(ElevatorState.Moving_WinCon, $"Arrived at WinCon floor {winConFloor}. WINNER!");
                 yield return new WaitForSeconds(1f);
             }
         }
@@ -313,41 +339,57 @@ public class Elevator : MonoBehaviour
         AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorStopping, this.transform.position);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorConfirm, this.transform.position);
         Debug.Log("Elevator Opening!");
+        SetState(ElevatorState.DoorsOpening, $"Opening doors at floor {currentFloor}.");
         elevatorAnim.Play("ElevatorOpen");
         AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorOpening, this.transform.position);
         rooms.ActivateRandomRoom();
 
         float waitTime = Random.Range(3f, 6f);
-        Debug.Log("Waiting " + waitTime + " seconds before moving...");
+        Debug.Log("Waiting " + waitTime + " seconds while doors are open...");
         yield return new WaitForSeconds(waitTime);
 
-        StartCoroutine(ElevatorRoutine());
+        isRunning = false;
+        SetState(ElevatorState.WaitingForInput, "Doors open cycle finished. Waiting for new input.");
     }
 
     public IEnumerator ElevatorClosing()
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorConfirm, this.transform.position);
         Debug.Log("Elevator Closing!");
+        SetState(ElevatorState.DoorsClosing, "Closing elevator doors.");
         elevatorAnim.Play("ElevatorClose");
         AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorClosing, this.transform.position);
 
         float waitTime = Random.Range(3f, 6f);
-        Debug.Log("Waiting " + waitTime + " seconds before moving...");
+        Debug.Log("Waiting " + waitTime + " seconds while doors are closed...");
         yield return new WaitForSeconds(waitTime);
 
         rooms.ResetRoom();
-        StartCoroutine(ElevatorRoutine());
+        isRunning = false;
+
+        // IMPORTANT: after a freak enters and doors close, we want to resume ElevatorRoutine
+        // if there are floors to go to.
+        if (floorCount.Contains(true) && !isRunning)
+        {
+            buttonPressed = true; // ensure Update logic also agrees we're "in motion mode"
+            StartCoroutine(ElevatorRoutine());
+        }
+        else
+        {
+            SetState(ElevatorState.WaitingForInput, "Doors closed. Waiting for next button press.");
+        }
     }
 
     public IEnumerator FreakGivesTheirRemarks()
     {
-        //**ADD STUFF FOR THE FREAK's REMARKS WHEN THE TIME COMES HERE**//
+        SetState(ElevatorState.FreakRemarks, "Freak is giving their remarks.");
 
         float waitTime = Random.Range(3f, 6f);
-        Debug.Log("Waiting " + waitTime + " seconds before moving...");
+        Debug.Log("Freak is giving remarks. Waiting " + waitTime + " seconds...");
         yield return new WaitForSeconds(waitTime);
 
-        StartCoroutine(ElevatorRoutine());
+        isRunning = false;
+        SetState(ElevatorState.WaitingForInput, "Freak finished remarks. Waiting for next input.");
     }
 
     #region Unused

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{5929d27e-6579-4e0a-aa07-0c498af59c4f}">
+		<property name="assetPath">
+			<value>chirping-birds-ambience-217410.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>97.944000000000003</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f9fd35ad-51db-44d0-9b6b-aceedb50f648}</destination>
+		</relationship>
+	</object>
+</objects>
