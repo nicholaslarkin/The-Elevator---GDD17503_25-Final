@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using FMODUnity;
 using FMOD.Studio;
+using UnityEngine.SceneManagement;
 
 public class CharacterRandomizer : MonoBehaviour
 {
@@ -23,17 +24,7 @@ public class CharacterRandomizer : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) //***TEST INPUT; CHANGE LATER***
-        {
-            Randomize();
-
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonPressed, this.transform.position); //test sound; runs from FMOD hardcoded into script
-        }
-
-        if (Input.GetKeyDown(KeyCode.T)) //***TEST INPUT; CHANGE LATER***
-        {
-            freakInElevator = true;
-        }
+        
     }
 
     public IEnumerator FreakSpawner()

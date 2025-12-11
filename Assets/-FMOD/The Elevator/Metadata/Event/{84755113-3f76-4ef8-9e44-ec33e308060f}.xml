@@ -149,7 +149,7 @@
 	<object class="SpatialiserEffect" id="{6edf1c1f-7eee-4641-9e35-66f164dcfdb0}" />
 	<object class="SFXReverbEffect" id="{f66d190d-d984-45bb-9631-64e3281c2337}">
 		<property name="decayTime">
-			<value>20000</value>
+			<value>7000</value>
 		</property>
 		<property name="wetLevel">
 			<value>10</value>

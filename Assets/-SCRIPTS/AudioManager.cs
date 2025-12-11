@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using FMODUnity;
 using FMOD.Studio;
+using FMODUnity;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -12,11 +11,14 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
         {
-            Debug.LogError("More than one AudioManager in the scene!");
+            Destroy(gameObject);
+            return;
         }
+
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -24,20 +26,41 @@ public class AudioManager : MonoBehaviour
         InitializeMusic(FMODEvents.instance.music);
     }
 
-    public EventInstance CreateInstance(EventReference eventReference)
+    private void Update()
     {
-        EventInstance eventinstance = RuntimeManager.CreateInstance(eventReference);
-        return eventinstance;
+        /*if (Input.GetKeyDown(KeyCode.R)) // TEST
+        {
+            ResetAudio();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }*/
     }
 
-    public void InitializeMusic (EventReference musicEventReference)
+    // Create any FMOD instance safely
+    public EventInstance CreateInstance(EventReference eventReference)
+    {
+        return RuntimeManager.CreateInstance(eventReference);
+    }
+
+    // Create + Start the music event
+    public void InitializeMusic(EventReference musicEventReference)
     {
         musicEventInstance = CreateInstance(musicEventReference);
         musicEventInstance.start();
     }
 
+    // One-shot SFX
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
     {
         RuntimeManager.PlayOneShot(sound, worldPos);
+    }
+
+    // Reset music properly
+    public void ResetAudio()
+    {
+        musicEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        musicEventInstance.release();
+
+        // Recreate the music using FMODEvents reference — NEVER raw strings
+        InitializeMusic(FMODEvents.instance.music);
     }
 }

@@ -1,7 +1,6 @@
 using NUnit.Framework.Internal;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using TMPro;
 using FMODUnity;
@@ -89,6 +88,8 @@ public class Elevator : MonoBehaviour
     private IEnumerator ElevatorRoutine()
     {
         isRunning = true;
+
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorMoving, this.transform.position);
 
         // Safety: if there's nothing to do and no freak inside, just bail
         if (!characterRandomizer.freakInElevator && !floorCount.Contains(true))
@@ -355,12 +356,12 @@ public class Elevator : MonoBehaviour
 
     public IEnumerator ElevatorOpening()
     {
-        //AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorStopping, this.transform.position); ***AUDIO***
-        //AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorConfirm, this.transform.position); ***AUDIO***
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorStopping, this.transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorConfirm, this.transform.position);
         Debug.Log("Elevator Opening!");
         SetState(ElevatorState.DoorsOpening, $"Opening doors at floor {currentFloor}.");
         elevatorAnim.Play("ElevatorOpen");
-        //AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorOpening, this.transform.position); ***AUDIO***
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorOpening, this.transform.position);
         rooms.ActivateRandomRoom();
 
         float waitTime = Random.Range(3f, 6f);
@@ -375,11 +376,11 @@ public class Elevator : MonoBehaviour
 
     public IEnumerator ElevatorClosing()
     {
-        //AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorConfirm, this.transform.position); ***AUDIO***
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorConfirm, this.transform.position);
         Debug.Log("Elevator Closing!");
         SetState(ElevatorState.DoorsClosing, "Closing elevator doors.");
         elevatorAnim.Play("ElevatorClose");
-        //AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorClosing, this.transform.position); ***AUDIO***
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.elevatorClosing, this.transform.position);
 
         float waitTime = Random.Range(3f, 6f);
         Debug.Log("Waiting " + waitTime + " seconds while doors are closed...");

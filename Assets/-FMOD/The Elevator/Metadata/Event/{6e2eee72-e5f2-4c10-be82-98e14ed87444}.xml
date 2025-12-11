@@ -90,7 +90,7 @@
 	<object class="MixerBusPanner" id="{d1319ab3-c6ef-4d5b-b872-0b90757701e2}" />
 	<object class="SingleSound" id="{c8e1e6be-d8a2-422d-81e3-32885cc6ddcd}">
 		<property name="length">
-			<value>6.6132653061224485</value>
+			<value>6.375</value>
 		</property>
 		<property name="timelockedOffset">
 			<value>4.75</value>
@@ -120,6 +120,7 @@
 		<relationship name="effects">
 			<destination>{1f297e20-407c-4f0b-9862-24dd4352e427}</destination>
 			<destination>{e17b4b4d-3e43-4c61-83f3-f23454321bb3}</destination>
+			<destination>{41304592-4175-4a9c-808f-2fe3ee671d38}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{767e8e7a-d2bf-40b0-bfd0-4b2346f09660}" />
@@ -135,6 +136,20 @@
 	<object class="MixerBusPanner" id="{c0239c24-52c1-442e-a223-f139cd37c056}" />
 	<object class="MixerBusFader" id="{1f297e20-407c-4f0b-9862-24dd4352e427}" />
 	<object class="SpatialiserEffect" id="{e17b4b4d-3e43-4c61-83f3-f23454321bb3}" />
+	<object class="SFXReverbEffect" id="{41304592-4175-4a9c-808f-2fe3ee671d38}">
+		<property name="decayTime">
+			<value>8500</value>
+		</property>
+		<property name="lateDelay">
+			<value>71</value>
+		</property>
+		<property name="wetLevel">
+			<value>-3</value>
+		</property>
+		<property name="dryLevel">
+			<value>-19</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{317a937b-f435-4428-8048-f87203b5c03b}" />
 	<object class="CompressorEffect" id="{eaf41261-e469-4a30-83a2-e3fb2e0c9af5}">
 		<property name="threshold">
