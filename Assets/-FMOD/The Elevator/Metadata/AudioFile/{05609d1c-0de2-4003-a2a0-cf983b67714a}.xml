@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{05609d1c-0de2-4003-a2a0-cf983b67714a}">
+		<property name="assetPath">
+			<value>Voices/James/James_Deep/James_Deep_General_Sym.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>6.9746938775510205</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f9fd35ad-51db-44d0-9b6b-aceedb50f648}</destination>
+		</relationship>
+	</object>
+</objects>

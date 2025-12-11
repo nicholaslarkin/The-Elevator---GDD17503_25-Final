@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EncodableAsset" id="{56d731c1-e4a1-4ec7-a9a8-a2af5cb2608a}">
+		<property name="assetPath">
+			<value>Voices/James/James_Spain/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f9fd35ad-51db-44d0-9b6b-aceedb50f648}</destination>
+		</relationship>
+	</object>
+</objects>
